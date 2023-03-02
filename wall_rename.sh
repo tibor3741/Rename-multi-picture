@@ -6,22 +6,14 @@ options=("Wallpaper_001...Wallpaper00...etc.png"  "Wallpaper_001...Wallpaper00..
 select opt in "${options[@]}"
 do
     case $opt in
-	"Wallpaper_001...Wallpaper00...etc.png" )
+	"file rename" )
 		i=1; temp=$(mktemp -p .); for file in *.png
   		do
+			echo what is new name?
+			read newname
 			mv "$file" $temp;
-			mv $temp $(printf "Wallpaper_%0.3d.png" $i)
-			i=$((i + 1))
-		done
-            ;;
-
-    "Wallpaper_001...Wallpaper00...etc.jpg")
-
-
-        	i=1; temp=$(mktemp -p .); for file in *.jpg
-		do
-			mv "$file" $temp;
-			mv $temp $(printf "Wallpaper_%0.3d.jpg" $i)
+			
+			mv $temp $(printf "$newname_%0.3d.png" $i)
 			i=$((i + 1))
 		done
             ;;
